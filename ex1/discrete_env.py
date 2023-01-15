@@ -10,7 +10,7 @@ class DiscreteEnv:
         self.current_pos = start_pos
         self.end_pos = end_pos
         self.P = P
-        self.max_steps = 30
+        self.max_steps = 15
         self.i = 0
         self.actions = {0: 'top', 1: 'left', 2: 'right', 3: 'bottom'}
 
@@ -45,10 +45,11 @@ class DiscreteEnv:
     def step(self, action):
         next_pos = self.get_next_position(action)
 
+        dist_from_current_to_end = self.get_distance(self.current_pos, self.end_pos)
         dist_to_start = self.get_distance(next_pos, self.start_pos)
         dist_to_end = self.get_distance(next_pos, self.end_pos)
         # reward = 25 + dist_to_start - dist_to_end
-        reward = 0
+        reward = 1 if dist_to_end > dist_from_current_to_end else 0.5
 
         done = next_pos == self.end_pos
 

@@ -33,8 +33,8 @@ class Agent():
         return probs
 
     def act(self, state):
-        # if np.random.uniform(0,1) < epsilon:
-        #     return random.choice([0,1,2,3])
+        if np.random.uniform(0,1) < epsilon:
+            return random.choice([0,1,2,3])
 
         prob = self.model(np.array([state]))
         dist = tfp.distributions.Categorical(probs=prob, dtype=tf.float32)
