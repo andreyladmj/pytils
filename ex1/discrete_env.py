@@ -1,3 +1,5 @@
+from random import randint
+
 import math
 import matplotlib.pyplot as plt
 
@@ -9,27 +11,32 @@ class DiscreteEnv:
         self.start_pos = start_pos
         self.current_pos = start_pos
         self.end_pos = end_pos
+        self.origin_P = P
         self.P = P
-        self.max_steps = 15
+        self.max_steps = 50
         self.i = 0
         self.actions = {0: 'top', 1: 'left', 2: 'right', 3: 'bottom'}
 
     def render(self):
-        arr = np.copy(self.P)
-        arr[self.current_pos] = 2
-        plt.imshow(arr)
+        plt.imshow(self.P)
         plt.show()
 
     def reset(self):
+        self.P = np.copy(self.origin_P)
+        self.start_pos = (randint(0, self.P.shape[0]-1), randint(0, self.P.shape[1]-1))
         self.current_pos = self.start_pos
         self.i = 0
+        self.end_pos = (randint(0, self.P.shape[0]-1), randint(0, self.P.shape[1]-1))
+        self.P[self.start_pos] = 3
+        self.P[self.end_pos] = 4
         return self.get_state()
 
     def get_vector(self):
         return (self.end_pos[0] - self.current_pos[0], self.end_pos[1] - self.current_pos[1])
 
     def get_state(self):
-        return self.current_pos + self.get_vector()
+        d = self.get_distance(self.current_pos, self.end_pos)
+        return self.current_pos + self.get_vector() + tuple([d])
 
     def get_distance(self, p1, p2):
         return math.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
@@ -49,18 +56,23 @@ class DiscreteEnv:
         dist_to_start = self.get_distance(next_pos, self.start_pos)
         dist_to_end = self.get_distance(next_pos, self.end_pos)
         # reward = 25 + dist_to_start - dist_to_end
-        reward = 1 if dist_to_end > dist_from_current_to_end else 0.5
+        reward = 0.5 if dist_to_end < dist_from_current_to_end else 0.0
 
         done = next_pos == self.end_pos
 
-        # if self.P[next_pos] == 1:
-        #     reward -= 1
+        if self.P[next_pos] == 1:
+            reward -= 0.2
 
         self.i += 1
         self.current_pos = next_pos
+        self.P[self.current_pos] = 2
 
-        if self.i == self.max_steps:
-            reward = 25 + dist_to_start - dist_to_end
+        if done:
+            reward += 20
+
+        if not done and self.i == self.max_steps:
+            reward = 2
+            # reward = 25 #+ dist_to_start - dist_to_end
             done = True
 
         return self.get_state(), reward, done, {}

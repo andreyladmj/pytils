@@ -5,13 +5,13 @@ import numpy as np
 import gym
 import tensorflow_probability as tfp
 
-epsilon = 0.1
+epsilon = 0.05
 
 class Model(tf.keras.Model):
     def __init__(self):
         super().__init__()
-        self.d1 = tf.keras.layers.Dense(30, activation='relu')
-        self.d2 = tf.keras.layers.Dense(30, activation='relu')
+        self.d1 = tf.keras.layers.Dense(128, activation='relu')
+        self.d2 = tf.keras.layers.Dense(64, activation='relu')
         self.out = tf.keras.layers.Dense(4, activation='softmax')
 
     def call(self, input_data):
@@ -32,8 +32,8 @@ class Agent():
         probs = [p.numpy() for p in self.model(np.array([state]))[0]]
         return probs
 
-    def act(self, state):
-        if np.random.uniform(0,1) < epsilon:
+    def act(self, state, add_random_actions=True):
+        if add_random_actions and np.random.uniform(0,1) < epsilon:
             return random.choice([0,1,2,3])
 
         prob = self.model(np.array([state]))
@@ -44,6 +44,7 @@ class Agent():
     def a_loss(self, prob, action, reward):
         dist = tfp.distributions.Categorical(probs=prob, dtype=tf.float32)
         log_prob = dist.log_prob(action)
+
         loss = -log_prob * reward
         return loss
 
@@ -53,6 +54,7 @@ class Agent():
     def train(self, states, rewards, actions):
         sum_reward = 0
         discnt_rewards = []
+        loses = []
         rewards.reverse()
         for r in rewards:
             sum_reward = r + self.gamma * sum_reward
@@ -63,5 +65,8 @@ class Agent():
             with tf.GradientTape() as tape:
                 p = self.model(np.array([state]), training=True)
                 loss = self.a_loss(p, action, reward)
+                loses.append(loss)
             grads = tape.gradient(loss, self.model.trainable_variables)
             self.opt.apply_gradients(zip(grads, self.model.trainable_variables))
+
+        return loses
