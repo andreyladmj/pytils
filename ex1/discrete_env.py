@@ -42,12 +42,14 @@ class DiscreteEnv:
     def step(self, action):
         next_pos = self.get_next_position(action)
 
-        reward = -0.3 * self.get_distance(next_pos, self.end_pos)
+        dist_to_start = self.get_distance(next_pos, self.start_pos)
+        dist_to_end = self.get_distance(next_pos, self.end_pos)
+        reward = 25 + dist_to_start - dist_to_end
 
         done = next_pos == self.end_pos
 
-        if self.P[next_pos] == 1:
-            reward -= 10
+        # if self.P[next_pos] == 1:
+        #     reward -= 1
 
         self.current_pos = next_pos
 

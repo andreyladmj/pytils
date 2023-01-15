@@ -1,8 +1,11 @@
+import random
+
 import tensorflow as tf
 import numpy as np
 import gym
 import tensorflow_probability as tfp
 
+epsilon = 0.1
 
 class Model(tf.keras.Model):
     def __init__(self):
@@ -30,6 +33,9 @@ class Agent():
         return probs
 
     def act(self, state):
+        if np.random.uniform(0,1) < epsilon:
+            return random.choice([0,1,2,3])
+
         prob = self.model(np.array([state]))
         dist = tfp.distributions.Categorical(probs=prob, dtype=tf.float32)
         action = dist.sample()
