@@ -10,6 +10,8 @@ class DiscreteEnv:
         self.current_pos = start_pos
         self.end_pos = end_pos
         self.P = P
+        self.max_steps = 30
+        self.i = 0
         self.actions = {0: 'top', 1: 'left', 2: 'right', 3: 'bottom'}
 
     def render(self):
@@ -20,6 +22,7 @@ class DiscreteEnv:
 
     def reset(self):
         self.current_pos = self.start_pos
+        self.i = 0
         return self.get_state()
 
     def get_vector(self):
@@ -44,13 +47,19 @@ class DiscreteEnv:
 
         dist_to_start = self.get_distance(next_pos, self.start_pos)
         dist_to_end = self.get_distance(next_pos, self.end_pos)
-        reward = 25 + dist_to_start - dist_to_end
+        # reward = 25 + dist_to_start - dist_to_end
+        reward = 0
 
         done = next_pos == self.end_pos
 
         # if self.P[next_pos] == 1:
         #     reward -= 1
 
+        self.i += 1
         self.current_pos = next_pos
+
+        if self.i == self.max_steps:
+            reward = 25 + dist_to_start - dist_to_end
+            done = True
 
         return self.get_state(), reward, done, {}

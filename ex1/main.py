@@ -10,7 +10,7 @@ wmap = WMap()
 env = DiscreteEnv(wmap.start_pos, wmap.end_pos, wmap.P)
 
 agentoo7 = Agent()
-steps = 100
+steps = 500
 s = 1
 for s in range(steps):
 
@@ -36,8 +36,8 @@ for s in range(steps):
         # env.render()
         # print("current_pos:", env.current_pos, 'reward:', reward)
 
-        if len(states) % 30 == 0:
-            done = True
+        # if len(states) % 30 == 0:
+        #     done = True
             # print("Iters:", len(states), "total_reward:", total_reward)
             # agentoo7.train(states, rewards, actions)
             # break
