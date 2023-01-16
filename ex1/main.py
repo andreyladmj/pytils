@@ -5,6 +5,7 @@ import numpy as np
 # sys.path.append(os.path.dirname(__file__))
 from ex1.agent import Agent
 from ex1.discrete_env import DiscreteEnv
+from ex1.discrete_env2 import DiscreteEnv2
 from ex1.wmap import WMap
 
 s = 1
@@ -12,13 +13,16 @@ wmap = WMap()
 env = DiscreteEnv(wmap.start_pos, wmap.end_pos, wmap.P)
 agentoo7 = Agent()
 
+add_random_actions = True
+max_steps = 20
+steps = 20
 
 tries = [
     (True, 5, 10),
     (True, 10, 20),
     (False, 15, 30),
-    (False, 20, 35),
-    (False, 30, 40),
+    (False, 15, 35),
+    (False, 15, 150),
 ]
 for add_random_actions, max_steps, steps in tries:
     for s in range(steps):
@@ -34,7 +38,7 @@ for add_random_actions, max_steps, steps in tries:
         while not done:
             # env.render()
             # add if action is possible
-            action = agentoo7.act(state, add_random_actions=add_random_actions)
+            action = agentoo7.act(env.normalize_state(state), add_random_actions=add_random_actions)
 
             next_state, reward, done, _ = env.step(action)
             rewards.append(reward)
@@ -57,7 +61,7 @@ for add_random_actions, max_steps, steps in tries:
             if done:
                 loses = agentoo7.train(states, rewards, actions)
                 # print("total step for this episord are {}".format(t))
-                print(f"total reward after {s} steps is {total_reward}, loses: {np.mean(loses)}")
+                print(f"total reward after {s} steps is {total_reward}")#, loses: {np.mean(loses)}")
                 # plt.plot(loses)
                 # plt.show()
                 # env.render()

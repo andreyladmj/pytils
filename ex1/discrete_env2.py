@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class DiscreteEnv:
+class DiscreteEnv2:
     def __init__(self, start_pos, end_pos, P):
         self.start_pos = start_pos
         self.current_pos = start_pos
@@ -61,12 +61,7 @@ class DiscreteEnv:
 
     def step(self, action):
         next_pos = self.get_next_position(action)
-
-        dist_from_current_to_end = self.get_distance(self.current_pos, self.end_pos)
-        dist_to_start = self.get_distance(next_pos, self.start_pos)
-        dist_to_end = self.get_distance(next_pos, self.end_pos)
-        # reward = 25 + dist_to_start - dist_to_end
-        reward = 1 if dist_to_end < dist_from_current_to_end else 0.0
+        reward = -1
 
         done = next_pos == self.end_pos
 

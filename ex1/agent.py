@@ -10,8 +10,8 @@ epsilon = 0.05
 class Model(tf.keras.Model):
     def __init__(self):
         super().__init__()
-        self.d1 = tf.keras.layers.Dense(128, activation='relu')
-        self.d2 = tf.keras.layers.Dense(64, activation='relu')
+        self.d1 = tf.keras.layers.Dense(64, activation='relu')
+        self.d2 = tf.keras.layers.Dense(32, activation='relu')
         self.out = tf.keras.layers.Dense(4, activation='softmax')
 
     def call(self, input_data):

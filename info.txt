@@ -2,3 +2,8 @@ https://towardsdatascience.com/reinforce-policy-gradient-with-tensorflow2-x-be1d
 
 
 https://github.com/abhisheksuran/Reinforcement_Learning
+
+
+PATH FINDING
+https://medium.com/betacom/how-to-find-the-shortest-path-using-reinforcement-learning-4a1bb21c2fb5
+https://github.com/marload/DeepRL-TensorFlow2#dqn
