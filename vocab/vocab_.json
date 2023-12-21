@@ -1,67 +1,67 @@
 [
   {
-    "word": "apparently",
-    "eng": "Used to express that something seems true based on available information, but without confirmation.",
-    "rus": "Используется для выражения того, что что-то кажется верным, основываясь на имеющейся информации, но без необходимости подтверждения."
+    "word_eng": "apparently",
+    "sentence_eng": "Used to express that something seems true based on available information, but without confirmation.",
+    "sentence_rus": "Используется для выражения того, что что-то кажется верным, основываясь на имеющейся информации, но без необходимости подтверждения."
   },
   {
-    "word": "fluffy",
-    "eng": "Describing something soft, light, and feathery in texture.",
-    "rus": "Описывает что-то мягкое, воздушное и пушистое."
+    "word_eng": "fluffy",
+    "sentence_eng": "Describing something soft, light, and feathery in texture.",
+    "sentence_rus": "Описывает что-то мягкое, воздушное и пушистое."
   },
   {
-    "word": "sophisticated",
-    "eng": "Describing something complex, refined, and elegant.",
-    "rus": "Описывает что-то сложное, утонченное и изысканное."
+    "word_eng": "sophisticated",
+    "sentence_eng": "Describing something complex, refined, and elegant.",
+    "sentence_rus": "Описывает что-то сложное, утонченное и изысканное."
   },
   {
-    "word": "belch",
-    "eng": "To emit a loud or unpleasant sound, typically after consuming food or drink.",
-    "rus": "Издавать громкий или неприятный звук, обычно после приема пищи или напитка."
+    "word_eng": "belch",
+    "sentence_eng": "To emit a loud or unpleasant sound, typically after consuming food or drink.",
+    "sentence_rus": "Издавать громкий или неприятный звук, обычно после приема пищи или напитка."
   },
   {
-    "word": "tall",
-    "eng": "Having greater height or vertical extent.",
-    "rus": "Имеющий большую высоту или вертикальный размер."
+    "word_eng": "tall",
+    "sentence_eng": "Having greater height or vertical extent.",
+    "sentence_rus": "Имеющий большую высоту или вертикальный размер."
   },
   {
-    "word": "short",
-    "eng": "Having lesser height or vertical extent.",
-    "rus": "Имеющий меньшую высоту или вертикальный размер."
+    "word_eng": "short",
+    "sentence_eng": "Having lesser height or vertical extent.",
+    "sentence_rus": "Имеющий меньшую высоту или вертикальный размер."
   },
   {
-    "word": "blew off the rest",
-    "eng": "To ignore or dismiss the remaining options or choices.",
-    "rus": "Проигнорировать или отклонить оставшиеся варианты или выбор."
+    "word_eng": "blew off the rest",
+    "sentence_eng": "To ignore or dismiss the remaining options or choices.",
+    "sentence_rus": "Проигнорировать или отклонить оставшиеся варианты или выбор."
   },
   {
-    "word": "tough",
-    "eng": "Strong and durable; difficult or hard to endure.",
-    "rus": "Прочный и стойкий; трудный или тяжелый для выдерживания."
+    "word_eng": "tough",
+    "sentence_eng": "Strong and durable; difficult or hard to endure.",
+    "sentence_rus": "Прочный и стойкий; трудный или тяжелый для выдерживания."
   },
   {
-    "word": "that would be a judgment call",
-    "eng": "Refers to a decision that requires subjective judgment rather than a clear objective answer.",
-    "rus": "Относится к решению, требующему субъективного суждения, а не четкого объективного ответа."
+    "word_eng": "that would be a judgment call",
+    "sentence_eng": "Refers to a decision that requires subjective judgment rather than a clear objective answer.",
+    "sentence_rus": "Относится к решению, требующему субъективного суждения, а не четкого объективного ответа."
   },
   {
-    "word": "bead",
-    "eng": "A small, usually round object with a hole for threading on a string.",
-    "rus": "Маленький, обычно круглый объект с отверстием для нанизывания на нить."
+    "word_eng": "bead",
+    "sentence_eng": "A small, usually round object with a hole for threading on a string.",
+    "sentence_rus": "Маленький, обычно круглый объект с отверстием для нанизывания на нить."
   },
   {
-    "word": "lit",
-    "eng": "Past tense of 'light'; illuminated or ignited.",
-    "rus": "Прошедшее время от 'light'; освещенный или поджженный."
+    "word_eng": "lit",
+    "sentence_eng": "Past tense of 'light'; illuminated or ignited.",
+    "sentence_rus": "Прошедшее время от 'light'; освещенный или поджженный."
   },
   {
-    "word": "inching",
-    "eng": "Moving slowly or in small increments.",
-    "rus": "Двигаться медленно или маленькими шагами."
+    "word_eng": "inching",
+    "sentence_eng": "Moving slowly or in small increments.",
+    "sentence_rus": "Двигаться медленно или маленькими шагами."
   },
   {
-    "word": "yo soy",
-    "eng": "yo soy",
-    "rus": "yo (ser)"
+    "word_eng": "yo soy",
+    "sentence_eng": "yo soy",
+    "sentence_rus": "yo (ser)"
   }
 ]
