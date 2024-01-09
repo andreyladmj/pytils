@@ -1,7 +1,9 @@
 https://towardsdatascience.com/reinforce-policy-gradient-with-tensorflow2-x-be1dea695f24
-
+https://learning.oreilly.com/library/view/deep-reinforcement-learning/9781617295430/kindle_split_012.html#ch03lev1sec2
 
 https://github.com/abhisheksuran/Reinforcement_Learning
+
+https://towardsdatascience.com/multi-agent-deep-reinforcement-learning-in-15-lines-of-code-using-pettingzoo-e0b963c0820b
 
 
 PATH FINDING

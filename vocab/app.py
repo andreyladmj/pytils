@@ -4,6 +4,8 @@ import time
 
 import PySimpleGUI as sg
 
+font = ("Verdana", 16)
+sg.set_options(font=font)
 sg.theme('DarkAmber')
 
 with open("vocab.json", encoding="utf8") as f:
@@ -14,7 +16,7 @@ def update_word(current_word, correct):
         words = json.loads(f.read())
 
     for i in range(len(words)):
-        if words[i]['word'] == current_word:
+        if words[i]['word_eng'] == current_word:
             if 'showed' not in words[i].keys():
                 words[i]['showed'] = 0
             if 'correct' not in words[i].keys():
@@ -35,8 +37,8 @@ while True:
     data = random.choice(words)
     # data = words[0]
 
-    word = data['word']
-    translation = data['rus']
+    word = data['word_eng']
+    translation = data['sentence_rus']
 
     layout = [  [sg.Text(translation, key='sentense')],
                 [sg.Text('Enter:'), sg.InputText(key='input')],
@@ -63,4 +65,4 @@ while True:
 
     update_word(word, correct)
     window.close()
-    time.sleep(10)
+    time.sleep(900)
