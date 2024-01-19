@@ -4,12 +4,34 @@ import time
 
 import PySimpleGUI as sg
 
+# import pandas as pd
+# pd.set_option("display.max_rows", 500)
+# pd.set_option("display.max_columns", 500)
+# pd.set_option("display.width", 1000)
+
+
 font = ("Verdana", 16)
 sg.set_options(font=font)
 sg.theme('DarkAmber')
 
 with open("vocab.json", encoding="utf8") as f:
     words = json.loads(f.read())
+    # words.sort(key=lambda word: word['correct'])
+
+# for i in range(len(words)):
+#     words[i]['probability'] = words[i].get('correct', 0) / words[i].get('showed', 1)
+#
+# for word in words:
+#     try:
+#         word['probability'] = 1 - word.get('correct', 0) / word.get('showed', 1)
+#     except ZeroDivisionError:
+#         word['probability'] = 0.8
+#
+# for word in words:
+#     print(word['word_eng'],word['correct'],word['showed'], word['probability'])
+#
+# import pandas as pd
+# df = pd.DataFrame(words)
 
 def update_word(current_word, correct):
     with open("vocab.json", encoding="utf8") as f:
@@ -65,4 +87,4 @@ while True:
 
     update_word(word, correct)
     window.close()
-    time.sleep(900)
+    time.sleep(300)
