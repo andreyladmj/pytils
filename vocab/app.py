@@ -32,6 +32,7 @@ with open("vocab.json", encoding="utf8") as f:
 #
 # import pandas as pd
 # df = pd.DataFrame(words)
+# коллокации
 
 def update_word(current_word, correct):
     with open("vocab.json", encoding="utf8") as f:
@@ -60,7 +61,13 @@ while True:
     # data = words[0]
 
     word = data['word_eng']
-    translation = data['sentence_rus']
+    example_choice = None
+
+    if 'examples' in data and len(data['examples']):
+        example_choice = random.choice(data['examples'])
+        translation = example_choice['rus']
+    else:
+        translation = data['sentence_rus']
 
     layout = [  [sg.Text(translation, key='sentense')],
                 [sg.Text('Enter:'), sg.InputText(key='input')],
@@ -81,7 +88,12 @@ while True:
             correct = word == values['input']
 
         if word != values['input']:
-            window['result'].update(word)
+
+            choice_text = ""
+            if example_choice is not None:
+                choice_text = f"\n\n{example_choice['eng']}"
+
+            window['result'].update(word + choice_text)
         else:
             break
 
